@@ -1,0 +1,8 @@
+
+dist
+.solid
+.vercel
+.netlify
+netlify
+/node_modules
+/.idea
