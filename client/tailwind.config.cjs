@@ -6,5 +6,5 @@ module.exports = {
       "poppins": ['Poppins', 'sans-serif'],
       "inter": ['Inter', 'sans-serif'],
       "japanese": ['Noto Sans JP', 'sans-serif'],
-    }}, plugins: []
+    }}, plugins: [require('@tailwindcss/forms')]
 }

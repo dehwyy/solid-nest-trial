@@ -15,21 +15,21 @@ const AppWrapper = () => {
   const navigate = useNavigate()
   return (
     <>
-      <nav class="items-center px-12 w-full h-20 fixed top-0 right-0 left-0 bg-white flex text-2xl">
+      <nav class="items-center justify-center px-12 w-full h-20 fixed top-0 right-0 left-0 bg-white flex text-2xl z-10 gap-4">
         <For each={navigationButton()}>
           {navigation => (
-            <div onClick={() => navigate(navigation.href)} class="p-2 pt-3 transition-all duration-200 rounded mr-12 cursor-pointer flex gap-1 hover:bg-sky-300">
+            <div onClick={() => navigate(navigation.href)} class="p-2 pt-3 transition-all duration-200 rounded cursor-pointer flex gap-1 hover:bg-sky-300">
               {navigation.location}
               {navigation.icon}
             </div>
           )}
         </For>
       </nav>
-      <div class=" bg pt-12 flex-grow">
+      <div class="bg pt-12 flex-grow basis-auto">
         <div class="m-auto" style={{ width: "700px" }}>
           <Routes>
             <Route path="/" component={Home} />
-            <Route path="cards">
+            <Route path="/cards">
               <Route path="/" component={Cards} />
               <Route path="/:cardId" component={flipCard} />
             </Route>
