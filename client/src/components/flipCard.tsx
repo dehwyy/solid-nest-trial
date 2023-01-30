@@ -18,7 +18,7 @@ const FlipCard = () => {
   })
   const inputStyle = `-translate-y-96 transition-transform text-sky-800 text-2xl text-2xl w-96 bg-transparent border-0 border-b-2 border-pink-400 focus:ring-0 focus:border-fuchsia-500 pb-0.5`
   // I should use "createStore rather than createMemo
-  // in case to make to arrays for failed and succeed cards
+  // in case to make to arrays for failed and succeed card
   const navigate = useNavigate()
   const [currentCardIndex, setCurrentCardIndex] = createSignal(0)
   const [isStarted, setStarted] = createSignal(false)
@@ -33,7 +33,7 @@ const FlipCard = () => {
             if (createCardStore.isCreatingCard) {
               setCreateCardStore("isCreatingCard", false)
             } else {
-              navigate("/cards")
+              navigate("/card")
             }
           }}>
           <Cross />
