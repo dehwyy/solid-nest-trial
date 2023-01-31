@@ -1,14 +1,18 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { ICardDB } from './models/card.schema';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { ICardDB } from "./models/card.schema"
+import CollectionEntity from "../collection/collection.entity"
 
 @Entity()
 export default class CardEntity implements ICardDB {
   @PrimaryGeneratedColumn()
-  id: number;
+  id: number
 
   @Column()
-  face: string;
+  face: string
 
   @Column()
-  backface: string;
+  backface: string
+
+  @ManyToOne(() => CollectionEntity, collection => collection.cards)
+  collection: CollectionEntity
 }
