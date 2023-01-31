@@ -1,0 +1,9 @@
+// file should be .dev.env and located in config/ directory
+
+PORT=<custom port>
+POSTGRES_HOST=localhost
+POSTGRES_PORT=<by default 5432>
+POSTGRES_USER=<your postgres user>
+POSTGRES_PASSWORD=<postgres user's password>
+POSTGRES_DATABASE=<database name>
+SYNC=<"true" for dev version>

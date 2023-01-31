@@ -10,7 +10,7 @@ import { createMemo, For } from "solid-js"
 const AppWrapper = () => {
   const navigationButton = createMemo(() => [
     { id: 1, href: "/", location: "Home", icon: <Kolyaska /> },
-    { id: 2, href: "/card", location: "Cards", icon: <HomePageIcon /> },
+    { id: 2, href: "/cards", location: "Cards", icon: <HomePageIcon /> },
   ])
   const navigate = useNavigate()
   return (

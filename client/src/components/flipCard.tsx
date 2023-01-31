@@ -33,7 +33,7 @@ const FlipCard = () => {
             if (createCardStore.isCreatingCard) {
               setCreateCardStore("isCreatingCard", false)
             } else {
-              navigate("/card")
+              navigate("/cards")
             }
           }}>
           <Cross />
