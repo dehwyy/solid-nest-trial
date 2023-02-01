@@ -25,4 +25,9 @@ export class CollectionService {
     const cards = await this.CollectionsRepository.findOne({ relations: { cards: true }, where: { id } })
     return cards
   }
+
+  async getAllCollections() {
+    const collection = await this.CollectionsRepository.find({ relations: { cards: true } })
+    return collection
+  }
 }

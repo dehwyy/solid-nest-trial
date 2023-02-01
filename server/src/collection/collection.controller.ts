@@ -52,4 +52,11 @@ export class CollectionController {
       throw new NotFoundException("collection with provided id hasn't been found")
     }
   }
+
+  @ApiOkResponse({ description: "successfully got collections", type: GetCollectionResponse, isArray: true })
+  @Get("/all")
+  async getAllCollections() {
+    const collections = this.collectionService.getAllCollections()
+    return collections
+  }
 }
