@@ -1,8 +1,9 @@
 import { Body, Controller, Get, InternalServerErrorException, NotFoundException, ParseIntPipe, Post, Query } from "@nestjs/common"
 import { CollectionService } from "./collection.service"
 import { CardService } from "../card/card.service"
-import { CreateCardDTO, CreateCollectionDTO } from "../card/models/card.dto"
+import { CreateCardDTO } from "../card/models/card.dto"
 import { ApiCreatedResponse, ApiInternalServerErrorResponse, ApiNotFoundResponse, ApiOkResponse, ApiTags } from "@nestjs/swagger"
+import CreateCollectionDTO, { GetCollectionResponse, PostCollectionResponse } from "./models/collection.dto"
 
 @ApiTags("CollectionsResolver")
 @Controller("/collection")
@@ -11,7 +12,7 @@ export class CollectionController {
 
   @ApiInternalServerErrorResponse({ description: "Server or db error while creating card" })
   @ApiNotFoundResponse({ description: "card was successfully generated, but no collection match provided id" })
-  @ApiCreatedResponse({ description: "created card and add it to the collection" })
+  @ApiCreatedResponse({ description: "created card and add it to the collection", type: PostCollectionResponse })
   @Post("/add")
   async createCardAndAddToCollection(@Body() cardData: CreateCardDTO, @Query("id", ParseIntPipe) id: number) {
     let card
@@ -29,7 +30,7 @@ export class CollectionController {
   }
 
   @ApiInternalServerErrorResponse({ description: "Server or db error while creating collection" })
-  @ApiCreatedResponse({ description: "created collection" })
+  @ApiCreatedResponse({ description: "created collection", type: PostCollectionResponse })
   @Post("/")
   async createCollection(@Body() collectionDto: CreateCollectionDTO) {
     try {
@@ -41,7 +42,7 @@ export class CollectionController {
   }
 
   @ApiNotFoundResponse({ description: "collection with provided id hasn't been found" })
-  @ApiOkResponse({ description: "successfully get collection by its id" })
+  @ApiOkResponse({ description: "successfully get collection by its id", type: GetCollectionResponse })
   @Get("/")
   async getCardsFromCollection(@Query("id", ParseIntPipe) id: number) {
     try {

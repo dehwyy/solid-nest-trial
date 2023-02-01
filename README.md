@@ -1,7 +1,7 @@
 # SolidCards💀
 
-<a href="https://www.solidjs.com">SolidJS</a><br>
-<a href="https://www.solidjs.com">NestJs</a>
+<a href="https://www.solidjs.com" target="_blank">SolidJS</a><br>
+<a href="https://www.solidjs.com" target="_blank">NestJs</a>
 
 ## Installation🤡
 

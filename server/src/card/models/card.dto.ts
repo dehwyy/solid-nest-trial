@@ -1,6 +1,5 @@
 import { ICardInput } from "./card.schema"
 import { ApiProperty } from "@nestjs/swagger"
-import { ICollectionCreateInput } from "../../collection/models/collection.schema"
 
 export class CreateCardDTO implements ICardInput {
   @ApiProperty({ example: "いい", description: "there should be 'face' of the flip card, for example foreign word" })
@@ -9,7 +8,7 @@ export class CreateCardDTO implements ICardInput {
   backface: string
 }
 
-export class CreateCollectionDTO implements ICollectionCreateInput {
-  @ApiProperty({ example: "main theme", description: "theme of the collection" })
-  theme: string
+export class CardFullData extends CreateCardDTO {
+  @ApiProperty({ example: 929, description: "Auto generated id" })
+  id: number
 }
