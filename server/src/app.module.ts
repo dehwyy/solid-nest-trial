@@ -1,12 +1,12 @@
-import { Module } from '@nestjs/common';
-import { CardModule } from './card/card.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule } from '@nestjs/config';
-import { CollectionModule } from './collection/collection.module';
-import typeormConfig from '../config/typeorm';
-import resolveEnvPath from '../utils/resolveEnvPath';
+import { Module } from "@nestjs/common"
+import { CardModule } from "./card/card.module"
+import { TypeOrmModule } from "@nestjs/typeorm"
+import { ConfigModule } from "@nestjs/config"
+import { CollectionModule } from "./collection/collection.module"
+import typeormConfig from "../config/typeorm"
+import resolveEnvPath from "../utils/resolveEnvPath"
 
-console.log(typeormConfig);
+console.log(typeormConfig)
 @Module({
   imports: [
     ConfigModule.forRoot({

@@ -9,11 +9,13 @@ specifiers:
   autoprefixer: ^10.4.13
   eslint: ^8.33.0
   eslint-plugin-prettier: ^4.2.1
+  ky: ^0.33.2
   postcss: ^8.4.21
   prettier: ^2.8.3
   solid-js: ^1.6.9
   solid-start: ^0.2.15
   solid-start-node: ^0.2.15
+  solid-transition-group: ^0.0.13
   tailwindcss: ^3.2.4
   typescript: ^4.9.4
   undici: ^5.15.1
@@ -23,8 +25,10 @@ specifiers:
 dependencies:
   '@solidjs/meta': 0.28.2_solid-js@1.6.9
   '@solidjs/router': 0.7.0_solid-js@1.6.9
+  ky: 0.33.2
   solid-js: 1.6.9
   solid-start: 0.2.16_55umyvmfaswzxpylft3tvr3dvm
+  solid-transition-group: 0.0.13_solid-js@1.6.9
   undici: 5.16.0
 
 devDependencies:
@@ -2941,6 +2945,11 @@ packages:
   /kolorist/1.6.0:
     resolution: {integrity: sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==}
 
+  /ky/0.33.2:
+    resolution: {integrity: sha512-f6oS2rKUcPu5FzdqCDbFpmzis/JlqFZw8uIHm/jf8Kc3vtnW+VDhuashOAKyBZv8bFiZFZUMNxTC0JtahEvujA==}
+    engines: {node: '>=14.16'}
+    dev: false
+
   /levn/0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
@@ -3575,6 +3584,14 @@ packages:
       wait-on: 6.0.1_debug@4.3.4
     transitivePeerDependencies:
       - supports-color
+
+  /solid-transition-group/0.0.13_solid-js@1.6.9:
+    resolution: {integrity: sha512-VA1V0ip4dsNOQJ/dCluCiAPBUuHspYFm4WYG91jpNmcP4rC4DY1S1EGds44JjiUAP7qEoEZdMhPaiS6lqTF7AA==}
+    peerDependencies:
+      solid-js: ^1.5.0
+    dependencies:
+      solid-js: 1.6.9
+    dev: false
 
   /source-map-js/1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}

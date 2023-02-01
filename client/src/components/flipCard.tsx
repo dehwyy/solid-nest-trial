@@ -1,28 +1,35 @@
-import { createSignal, Match, Show, Switch } from "solid-js"
+import { createResource, createSignal, Match, Show, Switch } from "solid-js"
 import { createStore, produce } from "solid-js/store"
 import Pencil from "~/svg/pencil.svg"
 import Cross from "~/svg/cross.svg"
-import { useNavigate } from "@solidjs/router"
+import { useNavigate, useParams } from "@solidjs/router"
+import GetRequest from "~/req/get"
+import PostRequest from "~/req/post"
 
 const FlipCard = () => {
+  const [createCardStore, setCreateCardStore] = createStore({
+    isCreatingCard: false,
+    cardFace: "",
+    cardBackface: "",
+  })
   const [flipCards, setFlipCards] = createStore({
     cards: [
       { id: 1, face: "教室", backface: "classroom" },
       { id: 2, face: "自転車", backface: "bicycle" },
     ],
   })
-  const [createCardStore, setCreateCardStore] = createStore({
-    isCreatingCard: false,
-    cardFace: "",
-    cardBackface: "",
-  })
   const inputStyle = `-translate-y-96 transition-transform text-sky-800 text-2xl text-2xl w-96 bg-transparent border-0 border-b-2 border-pink-400 focus:ring-0 focus:border-fuchsia-500 pb-0.5`
   // I should use "createStore rather than createMemo
   // in case to make to arrays for failed and succeed card
   const navigate = useNavigate()
+  const { cardId } = useParams()
   const [currentCardIndex, setCurrentCardIndex] = createSignal(0)
   const [isStarted, setStarted] = createSignal(false)
   const [isBackfaceVisible, setBackfaceVisible] = createSignal(false)
+  createResource(async () => {
+    const cardFromCollection = await GetRequest.getCollection(cardId)
+    setFlipCards("cards", cardFromCollection.cards)
+  })
 
   return (
     <div class="w-full h-36 px-36 pt-32">
@@ -43,13 +50,17 @@ const FlipCard = () => {
         </div>
         <form
           class="flex flex-col items-center gap-4 pb-4"
-          onSubmit={e => {
+          onSubmit={async e => {
             e.preventDefault()
+            const face = createCardStore.cardBackface
+            const backface = createCardStore.cardFace
             setFlipCards(
               produce(state => {
-                state.cards.push({ id: 1 + (state.cards.at(-1)?.id || 0), backface: createCardStore.cardBackface, face: createCardStore.cardFace })
+                state.cards.push({ id: 1 + (state.cards.at(-1)?.id || 0), backface, face })
               })
             )
+            // I should rework response from server in case that it could be unsafe
+            await PostRequest.createCardAndAddToCollection({ face, backface, collectionId: cardId })
             setCreateCardStore(state => ({ cardFace: "", cardBackface: "" }))
             // I should do floating window that shows what did user just make
           }}>
