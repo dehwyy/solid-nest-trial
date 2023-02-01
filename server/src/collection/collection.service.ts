@@ -30,4 +30,9 @@ export class CollectionService {
     const collection = await this.CollectionsRepository.find({ relations: { cards: true } })
     return collection
   }
+
+  async deleteCollection(id: number) {
+    const collection = await this.CollectionsRepository.delete({ id })
+    return collection
+  }
 }

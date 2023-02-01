@@ -13,6 +13,6 @@ export default class CardEntity implements ICardDB {
   @Column()
   backface: string
 
-  @ManyToOne(() => CollectionEntity, collection => collection.cards)
+  @ManyToOne(() => CollectionEntity, collection => collection.cards, { onDelete: "CASCADE" })
   collection: CollectionEntity
 }

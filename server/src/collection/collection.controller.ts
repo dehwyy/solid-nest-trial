@@ -1,4 +1,4 @@
-import { Body, Controller, Get, InternalServerErrorException, NotFoundException, ParseIntPipe, Post, Query } from "@nestjs/common"
+import { Body, Controller, Delete, Get, InternalServerErrorException, NotFoundException, ParseIntPipe, Post, Query } from "@nestjs/common"
 import { CollectionService } from "./collection.service"
 import { CardService } from "../card/card.service"
 import { CreateCardDTO } from "../card/models/card.dto"
@@ -57,6 +57,13 @@ export class CollectionController {
   @Get("/all")
   async getAllCollections() {
     const collections = this.collectionService.getAllCollections()
+    return collections
+  }
+
+  @ApiOkResponse({ description: "successfully got collections", type: GetCollectionResponse, isArray: true })
+  @Delete()
+  async deleteCollection(@Query("id", ParseIntPipe) id: number) {
+    const collections = this.collectionService.deleteCollection(id)
     return collections
   }
 }
